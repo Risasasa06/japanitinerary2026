@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>关西旅行日記 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFCF6; --ink:#3E3A39; --coral:#F2A497; --yellow:#F6D27A; --blue:#A8D3E6; --green:#B9DAA5;
+  color-scheme: light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  box-sizing:border-box;
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:70px;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Zen Maru Gothic','Noto Sans TC',sans-serif;line-height:1.6;}
+.border{border:3px solid var(--ink);}
+.rounded{border-radius:22px;}
+.card{background:#fff;padding:16px 18px;margin-bottom:14px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;background:var(--paper);border-bottom:3px solid var(--ink);padding-top:env(safe-area-inset-top,0px);}
+nav button{flex:1;padding:14px 4px;font-family:inherit;font-size:15px;font-weight:700;background:none;border:none;color:var(--ink);opacity:.5;cursor:pointer;}
+nav button.active{opacity:1;border-bottom:4px solid var(--coral);}
+main{max-width:640px;margin:0 auto;padding:70px 14px 40px;}
+section.tab{display:none;}
+section.tab.active{display:block;}
+.hero{text-align:center;padding:30px 10px 10px;}
+.hero h1{font-size:26px;margin:6px 0;}
+.hero .sub{font-size:14px;opacity:.75;}
+.countdown{display:inline-block;background:var(--yellow);padding:10px 22px;margin:14px 0;font-weight:900;font-size:20px;}
+.illus{width:120px;margin:6px auto;display:block;animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion: reduce){.illus{animation:none}.bounce{animation:none!important}}
+h2.sec{font-size:19px;margin:22px 0 10px;display:flex;align-items:center;gap:8px;}
+.chip{display:inline-block;font-size:12px;padding:2px 10px;border-radius:20px;border:2px solid var(--ink);margin-right:6px;background:var(--blue);}
+.chip.city{background:var(--green);}
+.chip.fee{background:var(--coral);}
+.row{display:flex;gap:10px;}
+.daybar{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;}
+.daybtn{flex:0 0 auto;padding:8px 14px;font-weight:700;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:2px solid var(--ink);border-radius:16px;cursor:pointer;}
+.daybtn.active{background:var(--coral);transform:scale(1.07);transition:.15s;}
+.timeline{position:relative;padding-left:20px;}
+.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:3px;background:var(--ink);}
+.titem{position:relative;margin-bottom:14px;}
+.titem::before{content:'';position:absolute;left:-20px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);}
+.titem .time{font-weight:900;font-size:15px;}
+.titem .name{font-weight:700;margin:2px 0;}
+.titem .note{font-size:13px;opacity:.8;white-space:pre-line;}
+.titem a{color:var(--ink);font-size:13px;text-decoration:underline;}
+.task{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--ink);}
+.task input{appearance:none;-webkit-appearance:none;width:20px;height:20px;min-width:20px;border:2px solid var(--ink);border-radius:5px;background:#fff;cursor:pointer;position:relative;}
+.task input:checked::after{content:'';position:absolute;left:4px;top:0px;width:6px;height:11px;border:solid var(--ink);border-width:0 3px 3px 0;transform:rotate(40deg);}
+.task.done label{text-decoration:line-through;opacity:.5;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+td,th{padding:6px 4px;text-align:left;border-bottom:1px solid #ddd;}
+.smallnote{font-size:12px;opacity:.65;margin-top:10px;}
+footer{text-align:center;font-size:12px;opacity:.6;padding:20px;}
+</style>
+</head>
+<body>
+<nav>
+  <button data-tab="flight" class="active">✈️ 航班</button>
+  <button data-tab="trip">📖 行程</button>
+  <button data-tab="prep">🎒 准备</button>
+</nav>
+<main>
+<section class="hero">
+  <svg class="illus" viewBox="0 0 120 120"><circle cx="60" cy="60" r="55" fill="var(--yellow)" stroke="var(--ink)" stroke-width="3"/><path d="M20 80 h80 M35 80 v-35 M85 80 v-35 M15 40 h90 M25 40 l10-15 h50 l10 15" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/></svg>
+  <h1>OUR TRAVEL DIARY</h1>
+  <div class="sub">关西，日本 · 2026/10/31 - 2026/11/07 · 8D7N</div>
+  <div class="sub">6大人・3小孩 ｜ 时差 +1小时</div>
+  <div class="countdown" id="cd"></div>
+</section>
+
+<section id="flight" class="tab active">
+  <h2 class="sec">🏨 住宿</h2>
+  <div class="card rounded border" id="stayCard"></div>
+  <h2 class="sec">✈️ 航班與交通</h2>
+  <div id="flightList"></div>
+</section>
+
+<section id="trip" class="tab">
+  <h2 class="sec">📖 每日旅行日記</h2>
+  <div class="daybar" id="daybar"></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="prep" class="tab">
+  <h2 class="sec">🎒 出發前清單</h2>
+  <div class="card rounded border" id="tasks"></div>
+  <h2 class="sec">💰 旅行預算</h2>
+  <div class="card rounded border">
+    <table id="budgetTbl"><tr><th>項目</th><th>類別</th><th>預算</th><th>實際</th><th>狀態</th></tr></table>
+    <div class="smallnote">僅供參考 Just for reference</div>
+  </div>
+</section>
+</main>
+<footer>📌 本頁為 Notion 旅行日記的靜態快照（製作於 2026/10/14），之後不會自動與 Notion 同步，若 Notion 內容更新需重新產生頁面。</footer>
+
+<script>
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---- DATA (verbatim from Notion, no invented values) ----
+const stay = {name:'Airbnb', checkin:'2026-10-31', checkout:'2026-11-07', addr:'〒537-0013 大阪府大阪市東成區大今里南1丁目18-10', note:'07/11 10点早上退房哦。记得带走所有东西。'};
+
+const flights = [
+ {type:'去程航班', name:'马来西亚飞日本', no:'D7532', carrier:'Air Asia', date:'2026-10-31', dep:'KLIA Terminal 2', depT:'02:15', arr:'KIX airport', arrT:'09:45', note:'记得check-in哦'},
+ {type:'回程航班', name:'Wai Yew Family - 日本飞马来西亚', no:'D7533', carrier:'Air Asia', date:'2026-11-07', dep:'KIX airport', depT:'11:00', arr:'KLIA Terminal 2', arrT:'17:30', note:'Safe flight！'},
+ {type:'回程航班', name:'Yap sis & Mandy Family - 日本飞马来西亚', no:'D7379', carrier:'Air Asia', date:'2026-11-07', dep:'KIX airport', depT:'20:45', arr:'KLIA Terminal 2', arrT:'05:00 (+1)', note:'Safe flight!'}
+];
+
+const days = [
+{d:'2026-10-31', label:'Day1 10/31', items:[
+ {t:'09:45', n:'KIX airport', dur:'2.5h', c:'KIX 机场', y:'机场', map:'https://maps.app.goo.gl/QXnVUgPH95zTqrMe8'},
+ {t:'12:15', n:'Lunch 午餐推荐', c:'Nara 奈良', y:'餐厅', note:'1. 志津香 近铁店 (Shizuka)\n2. Tonkatsu Ganko Nara とんかつ がんこ 奈良店\n3. 麵闘庵 (Mentouan)'},
+ {t:'13:15', n:'Nara Deer Park 千頭鹿公園', dur:'2h', c:'Nara 奈良', y:'景點', fee:'免费（公园开放式，鹿饼约 ¥200/份）', map:'https://maps.app.goo.gl/dPJGM8myUBfxLfr66'},
+ {t:'14:15', n:'Todaiji Temple 東大寺', dur:'1.5h', c:'Nara 奈良', y:'景點', fee:'成人 ¥800 / 儿童 ¥400（幼童通常免费）', map:'https://maps.app.goo.gl/2syWFpoFM9izmo5M7'},
+ {t:'15:00', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿', note:'〒537-0013 大阪府大阪市東成區大今里南1丁目18-10', map:'https://maps.app.goo.gl/vdukmaCJUFB4cayJ7'}
+]},
+{d:'2026-11-01', label:'Day2 11/01', items:[
+ {t:'08:00', n:'Depart from airbnb', dur:'1h15m', c:'Airbnb', y:'On the road'},
+ {t:'09:15', n:'Kiyomizu-dera Temple 清水寺', dur:'2h', c:'Kyoto 京都', y:'景點', fee:'成人 ¥400 / 儿童免费', map:'https://maps.app.goo.gl/1vL1RJBtkc6oHR6YA'},
+ {t:'11:15', n:'Ninenzaka & Sannenzaka Slopes 二年坂 / 三年坂', dur:'1h', c:'Kyoto 京都', y:'景點', fee:'免费（传统街道步行）', map:'https://maps.app.goo.gl/v1RbqXCtuh8y1a2D8'},
+ {t:'12:15', n:'Lunch 午餐推荐', c:'Kyoto 京都', y:'餐厅', note:'1. 釜座 二年坂店 KAMANZA（walk in only for general lunch）\n2. 清水顺正 おかべ家 (Junsei Okabeya)\n3. Kyoto Tonkatsu Katsuda Shijokarasuma 京都とんかつ かつ田 四条烏丸店'},
+ {t:'13:30', n:'Yasaka Shrine 八坂神社', dur:'45m', c:'Kyoto 京都', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/CPUjqv7GBSrisJ6V8'},
+ {t:'14:15', n:'Gion & Hanamikoji Street 祇园 / 花见小路', dur:'1h', c:'Kyoto 京都', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/WPY3D5UCrTyE18mB9'},
+ {t:'15:30', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿', map:'https://maps.app.goo.gl/HhaHFtFVtUSvWgZD9'}
+]},
+{d:'2026-11-02', label:'Day3 11/02', items:[
+ {t:'08:00', n:'Depart from airbnb', dur:'1h15m', c:'Airbnb', y:'On the road', map:'https://maps.app.goo.gl/eEzvYZZDhfexWYwg7'},
+ {t:'09:00', n:'伏见稻荷神社 Fushimi Inari Shrine', dur:'2h', c:'Kyoto 京都', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/SDmV1zFDPFmiCg5A7'},
+ {t:'11:30', n:'锦市场 Nishiki Morning Market', dur:'1.5h', c:'Kyoto 京都', y:'景點', fee:'餐饮小吃自费', map:'https://maps.app.goo.gl/iq3h11v23MmC118z9'},
+ {t:'', n:'午餐推荐（锦市场 / 乌丸周边）', c:'Kyoto 京都', y:'餐厅', note:'1. 锦市场熟食小吃街 (Nishiki Market Stall)\n2. 炸猪排 (Katsukura)\n3. 京都一乘寺 ラーメン or Tendon Makino Kyoto Teramachi North'},
+ {t:'13:45', n:'渡月桥 Togetsukyo Bridge', dur:'45m', c:'Kyoto 京都', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/ZkUe15iopfkVfchR7'},
+ {t:'14:30', n:'Arashiyama Bamboo Grooves 嵐山竹林之道', dur:'1.5h', c:'Kyoto 京都', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/w7ADic1Er2KaQLT58'},
+ {t:'16:00', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿', map:'https://maps.app.goo.gl/Kt73sRDJ7zFohitb6'}
+]},
+{d:'2026-11-03', label:'Day4 11/03', items:[
+ {t:'08:00', n:'Depart from airbnb', dur:'1h15', c:'Airbnb', y:'On the road', map:'https://maps.app.goo.gl/mkCcKkVQqsaPp5g7A'},
+ {t:'09:15', n:'神户港 Harborland, Kobe port tower', dur:'1h', c:'Kobe 神户', y:'景點', fee:'免费（若登神户港塔观景台另计约 ¥1,000）', map:'https://maps.app.goo.gl/nJoEskr83oZx7taW7'},
+ {t:'10:15', n:'Meriken Park 美利坚公园', dur:'45m', c:'Kobe 神户', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/bJGTrGFe7XCJ3CXD7'},
+ {t:'11:30', n:'神户中华街 Nankin-machi', dur:'1h', c:'Kobe 神户', y:'景點', fee:'餐饮自费', map:'https://maps.app.goo.gl/Ae4TRB13HmFpqgTr9'},
+ {t:'', n:'午餐推荐（神户港 umie 购物中心 / 南京町中华街）', c:'Kobe 神户', y:'餐厅', note:'1. 神户南京町 老祥记 (Roshoki)\n2. Ebisu Sushi 魚河岸のすし えびす 三宮東店\n3. Butter Pancake / Eggs \'n Things（Harborland店）亲子友善美式/日式轻食餐厅'},
+ {t:'13:15', n:'Kōbe Anpanman Children\u2019s Museum & Mall 麵包超人樂園', dur:'3h', c:'Kobe 神户', y:'景點', fee:'成人及1岁以上儿童约 ¥2,200-2,500（按当日官方定价为准）', map:'https://maps.app.goo.gl/PSJkmc4xgdKnimo86'},
+ {t:'16:00', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿', map:'https://maps.app.goo.gl/J938cEE4NzmQPTHq8'}
+]},
+{d:'2026-11-04', label:'Day5 11/04', items:[
+ {t:'07:00', n:'Group Yap sis & Mandy Family - depart to USJ 環球影城', c:'', y:'On the road'},
+ {t:'09:00', n:'Group Families - depart to Uji, Kyoto 宇治', dur:'1.5hr', c:'Uji Kyoto', y:'On the road', note:'搭taxi 30mins（約2800yen per car）到Kyobashi Station（京橋駅），京阪电车路线在Chushojima Station（中書島駅）換乘京阪宇治線列車。1hr travelling time to arrive at Keihan Uji Station. Fare 420yen per adult.', map:'https://maps.app.goo.gl/TqqivR8oJthABmjg6'},
+ {t:'10:30', n:'平等院 Byodoin Temple', dur:'1.5hr', c:'Uji Kyoto', y:'景點', fee:'成人 ¥600 / 儿童 ¥300', map:'https://maps.app.goo.gl/Wza6LLYJE3SEzJ516'},
+ {t:'12:00', n:'抹茶街', dur:'1h', c:'Uji Kyoto', y:'景點', fee:'品尝抹茶及购物自费'},
+ {t:'', n:'午餐推荐（宇治抹茶街 / 平等院参道）', c:'Uji Kyoto', y:'餐厅', note:'1. 中村藤吉 本店 / 平等院店 (Nakamura Tokichi) 宇治抹茶名店\n2. 伊藤久右卫门 本店 (Itohkyuemon) 抹茶料理与甜品\n3. 宇治川美之吉 (Torikiku / Agetsu) 京料理', map:'https://maps.app.goo.gl/vUpSjFzsFBK4A1hD8'},
+ {t:'14:00', n:'宇治川散步 Chill stroll after lunch', dur:'1h', c:'Uji Kyoto', y:'景點', map:'https://maps.app.goo.gl/D2QJu7CSn7APMXJZ9'},
+ {t:'15:00', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿'}
+]},
+{d:'2026-11-05', label:'Day6 11/05', items:[
+ {t:'10:00', n:'Depart from airbnb', dur:'40m', c:'Airbnb', y:'On the road', map:'https://maps.app.goo.gl/izo8GZ67raUiXHo97'},
+ {t:'10:30', n:'大阪城（外观拍照即可）Osaka Castle', dur:'1h', c:'Osaka 大阪', y:'景點', fee:'免费（若选择进入天守阁内部参观，成人约 ¥600）', map:'https://maps.app.goo.gl/DTy2bvFcPKzygeey8'},
+ {t:'12:00', n:'Shinsekai 新世界商店廣場', dur:'3.5h', c:'Osaka 大阪', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/gebGUiPsoxTbXBAEA'},
+ {t:'', n:'午餐推荐（新世界 / 通天阁周边）', c:'Osaka 大阪', y:'餐厅', note:'1. 元祖串炸 达摩 (Kushikatsu Daruma Shinsekai) 大阪著名串炸店\n2. 串炸 八重胜 (Yaekatsu) 在地超高人气串炸老店'},
+ {t:'15:30', n:'Tsutenkaku Tower 通天閣', dur:'1h', c:'Osaka 大阪', y:'景點', fee:'周边街道免费；登塔成人约 ¥1,000 / 儿童约 ¥500', map:'https://maps.app.goo.gl/LpMJYdY7cvHNgTVF6'},
+ {t:'16:30', n:'Airbnb 返回大阪民宿', c:'Osaka 大阪', y:'民宿', map:'https://maps.app.goo.gl/eQwAAUx1wML37rkk7'}
+]},
+{d:'2026-11-06', label:'Day7 11/06', items:[
+ {t:'09:00', n:'Depart from airbnb', dur:'30m', c:'Airbnb', y:'On the road', map:'https://maps.app.goo.gl/TQ38XbdVo2euX7Um7'},
+ {t:'09:30', n:'难波八阪神社 Namba Yasaka Shrine（狮子头神社，除厄运）', dur:'45m', c:'Osaka 大阪', y:'景點', fee:'免费', map:'https://maps.app.goo.gl/kekSE8TVAjySFWgF7'},
+ {t:'10:30', n:'黑门市场 Kuromon Seafood market', dur:'2h', c:'Osaka 大阪', y:'景點', fee:'海鲜小吃自费', note:'Kuromon more like tourist spot. Another local fresh morning market in Osaka is Kizu Wholesale market, but have to be there early as 9am, by noon most stalls will be closed.', map:'https://maps.app.goo.gl/Z6js9sawAbkumAQu6'},
+ {t:'', n:'午餐推荐（黑门市场 / 道顿堀周边）', c:'Osaka 大阪', y:'餐厅', note:'1. 黑门市场海鲜摊 (Kuromon Seafood Market) 现场选烹海鲜美食\n2. 千房 大阪烧 道顿堀ビル店 (Chibo) 大阪传统铁板烧/大阪烧\n3. 天妇罗 大起水产 / 蟹道乐 (Kani Doraku) 螃蟹料理 / 天妇罗定食'},
+ {t:'12:30', n:'道顿堀 Dotonburi', dur:'1h', c:'Osaka 大阪', y:'景點', fee:'购物与美食自费', note:'Dotonburi river cruise - 成人约 ¥1,200 / 儿童约 ¥400\nUmeda sky garden - 成人约 ¥2,000 / 4岁以下幼儿免费', map:'https://maps.app.goo.gl/1YMDDr53cS2ESZhZ8'},
+ {t:'13:30', n:'心斋桥购物街 Shinsaibashi Shopping Street', dur:'2h', c:'Osaka 大阪', y:'景點', fee:'购物与美食自费', map:'https://maps.app.goo.gl/gebGUiPsoxTbXBAEA'},
+ {t:'15:30', n:'Airbnb 返回大阪民宿', c:'Airbnb', y:'民宿', map:'https://maps.app.goo.gl/5yfpNatGEti4yYDS9'}
+]},
+{d:'2026-11-07', label:'Day8 11/07', items:[
+ {t:'07:00', n:'Wai Yew Family depart to airport', c:'KIX 机场', y:'机场', dur:'1h', map:'https://maps.app.goo.gl/oJoQjLpmsabCTsocA'},
+ {t:'10:00', n:'Airbnb Checkout time', c:'Airbnb', y:''},
+ {t:'11:00', n:'Wai Yew Family - Departure flight time', c:'', y:''},
+ {t:'11:00', n:'Osaka Aquarium Kaiyukan 海遊館', dur:'3h', c:'Osaka 大阪', y:'景點', fee:'成人 ¥2,700 / 儿童 ¥1,400 / 3岁以下幼儿免费', note:'要上网预订门票哦，Klook/KKday/Trip.com', map:'https://maps.app.goo.gl/6RSmN4pjvZ51A6qX6'},
+ {t:'', n:'午餐推荐（天保山购物中心）', c:'Osaka 大阪', y:'餐厅', note:'1. 自由轩 天保山店 (Jiyuken) 传统日式洋食/名物咖喱\n2. 北极星 蛋包饭 天保山店 (Hokkyokusei) 日本蛋包饭创始老店\n3. 浪花食食横丁 炸串/面类 (Naniwa Kuishinbo Yokocho) 昭和复古美食街'},
+ {t:'14:00', n:'Kansai Rinku Premium Outlet 关西臨空城', dur:'2h', c:'Osaka 大阪', y:'景點', fee:'购物自费', map:'https://maps.app.goo.gl/jycXjssFkFEXpcnm8'},
+ {t:'16:00', n:'Yap sis & Mandy Family Depart to airport', c:'KIX 机场', y:'机场', dur:'10m', note:'10mins from Rinku premium outlet driving distance, can have dinner at outlet or airport.', map:'https://maps.app.goo.gl/VuNoRiFya5Sa4hi59'},
+ {t:'20:45', n:'Yap sis & Mandy Family Departure flight', c:'', y:''}
+]}
+];
+
+const tasks = [
+ {n:'护照与入境资料 Visit Japan Web', cat:'文件', pri:'高'},
+ {n:'日币现金/ Digital Bank Card', cat:'預訂', pri:'高'},
+ {n:'購買旅遊保險', cat:'文件', pri:'中'},
+ {n:'網路／SIM／eSIM', cat:'交通', pri:'中'},
+ {n:'整理行李', cat:'行李', pri:'中'},
+ {n:'Translation app', cat:'', pri:''},
+ {n:'GO Japan taxi / Didi app download', cat:'', pri:''},
+ {n:'Check in flight', cat:'', pri:''},
+ {n:'Suica 交通卡', cat:'', pri:''},
+ {n:'Airbnb 入住资料', cat:'', pri:''},
+ {n:'Travel adaptor', cat:'', pri:''}
+];
+
+const budget = [
+ {n:'包车', cat:'交通', b:'', a:'333,000', cur:'JPY', paid:'未付款'},
+ {n:'Airbnb in Osaka 8D7N', cat:'住宿', b:'', a:'3,664.37', cur:'MYR', paid:'已付款'},
+ {n:'餐飲（每天三餐）', cat:'餐飲', b:'4,000', a:'', cur:'JPY', paid:'未付款'},
+ {n:'景點／門票（每人）', cat:'活動', b:'8,800', a:'', cur:'JPY', paid:'未付款'}
+];
+
+// ---- RENDER ----
+document.getElementById('stayCard').innerHTML = `<b>${stay.name}</b><br>入住 ${stay.checkin} → 退房 ${stay.checkout}<br>📍 ${stay.addr || '待確認'}<br><span class="note">${stay.note||''}</span>`;
+
+document.getElementById('flightList').innerHTML = flights.map(f=>`
+ <div class="card rounded border">
+  <span class="chip">${f.type}</span><b>${f.name}</b>
+  <div>${f.date} ・ ${f.carrier} ${f.no}</div>
+  <div>${f.dep} ${f.depT} → ${f.arr} ${f.arrT}</div>
+  <div class="note">${f.note||''}</div>
+ </div>`).join('');
+
+const icon = {'景點':'🏯','餐厅':'🍜','民宿':'🏠','机场':'✈️','On the road':'🚕'};
+function renderDay(i){
+  const day = days[i];
+  document.getElementById('timeline').innerHTML = `<div class="timeline">` + day.items.map(it=>`
+   <div class="titem">
+    <div class="time">${it.t||'—'} ${it.dur?('· 停留 '+it.dur):''}</div>
+    <div class="name">${icon[it.y]||''} ${it.n}</div>
+    ${it.c?`<span class="chip city">${it.c}</span>`:''}${it.fee?`<span class="chip fee">¥ ${it.fee}</span>`:''}
+    ${it.note?`<div class="note">${it.note}</div>`:''}
+    ${it.map?`<div><a href="${it.map}" target="_blank" rel="noopener">📍 Google Map</a></div>`:''}
+   </div>`).join('') + `</div>`;
+  document.querySelectorAll('.daybtn').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+}
+document.getElementById('daybar').innerHTML = days.map((d,i)=>`<button class="daybtn" data-i="${i}">${d.label}</button>`).join('');
+document.querySelectorAll('.daybtn').forEach(b=>b.addEventListener('click', e=>{
+  renderDay(+b.dataset.i);
+  if(!reduced){b.animate([{transform:'scale(1.15)'},{transform:'scale(1.07)'}],{duration:220,easing:'ease-out'});}
+}));
+renderDay(0);
+
+// checklist with localStorage (per-device only)
+let checked = {};
+try{checked = JSON.parse(localStorage.getItem('kansai_checklist')||'{}');}catch(e){}
+function renderTasks(){
+  document.getElementById('tasks').innerHTML = tasks.map((t,i)=>`
+   <div class="task ${checked[i]?'done':''}">
+    <input type="checkbox" id="tk${i}" ${checked[i]?'checked':''}>
+    <label for="tk${i}">${t.n}${t.pri?` <span class="chip">${t.pri}優先</span>`:''}</label>
+   </div>`).join('');
+  tasks.forEach((t,i)=>{
+    document.getElementById('tk'+i).addEventListener('change', e=>{
+      checked[i]=e.target.checked;
+      try{localStorage.setItem('kansai_checklist', JSON.stringify(checked));}catch(err){}
+      renderTasks();
+    });
+  });
+}
+renderTasks();
+
+document.getElementById('budgetTbl').innerHTML += budget.map(b=>`
+ <tr><td>${b.n}</td><td>${b.cat}</td><td>${b.b?b.b+' '+b.cur:'待確認'}</td><td>${b.a?b.a+' '+b.cur:'待確認'}</td><td>${b.paid}</td></tr>`).join('');
+
+// countdown (Asia/Tokyo-ish, local time of target date 2026-10-31)
+function updateCD(){
+  const target = new Date('2026-10-31T00:00:00+09:00');
+  const now = new Date();
+  const diff = target - now;
+  const el = document.getElementById('cd');
+  if(diff<=0){el.textContent='旅途進行中／已結束 🎉'; return;}
+  const d = Math.floor(diff/86400000);
+  el.textContent = `出發倒數 ${d} 天`;
+}
+updateCD();
+
+// tabs
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click', ()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('section.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active');
+  window.scrollTo({top:0, behavior: reduced?'auto':'smooth'});
+}));
+</script>
+</body>
+</html>
